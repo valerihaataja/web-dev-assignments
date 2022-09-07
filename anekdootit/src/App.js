@@ -35,7 +35,7 @@ const App = () => {
       <Button text = "Next anecdote" handleClick={() => {
         setSelected(Math.random() * 7 | 0);
       }}/>
-      <h1>Anecdote of the day</h1>
+      <h1>Anecdote with most votes</h1>
       <p>{anecdotes[copy.indexOf(max)]}</p>
       <p>votes: {copy[copy.indexOf(max)]}</p>
     </div>
