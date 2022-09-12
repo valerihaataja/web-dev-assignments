@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  justify-content: right;
+}
+
+.Root {
+  background-color: rgb(172, 55, 55);
+  min-height: 100vh;
+}
+
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: tomato;
+  color: white;
+}
+
+.text {
+  font-size: 24px;
+}
+
+.row {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
