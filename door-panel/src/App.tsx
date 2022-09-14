@@ -4,7 +4,7 @@ import CalendarEventContainer from './components/CalendarEventContainer/Calendar
 import Header from './components/Header/Header';
 
 function App() {
-
+  // console.log(window.eb_core);
   return (
     <div className='Root'>
       <Header />
