@@ -1,4 +1,4 @@
-.App {
+.Content {
   text-align: center;
   justify-content: right;
 }
@@ -17,6 +17,10 @@
 
 .text {
   font-size: 24px;
+}
+
+.spacer {
+  width: 20px;
 }
 
 .row {

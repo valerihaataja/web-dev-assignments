@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import './App.css';
-import CalendarEventContainer from './components/CalendarEventContainer/CalendarEventContainer';
-import Header from './components/Header/Header';
+import { useState } from "react";
+import { EbContext } from '.';
+
 
 function App() {
-  // console.log(window.eb_core);
+  const eb = useContext(EbContext) as any;
+  const [filterText, setFilterText] = useState("");
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/room/${filterText}`;
+    navigate(path);
+    setFilterText("");
+  }
   return (
     <div className='Root'>
-      <Header />
-      <div className='App'>
-        <h1>Title</h1>
-        <h2>A meeting room for 10 people with 1 persion inside</h2>
-        <CalendarEventContainer />
-        <CalendarEventContainer />
-        <div className='row'>
-          <p className='text'>Temperature: 21.4</p>
-          <p className='text'>CO2: 444</p>
-        </div>
-      </div>
+      <nav>
+        <input
+          value={filterText}
+          onChange={(event) => {
+            setFilterText(event.target.value);
+            console.log(filterText);
+
+          }}
+        />
+        <button onClick={routeChange}>Search</button>
+      </nav>
+      <Outlet />
     </div>
   );
 
 }
+
+
 
 export default App;

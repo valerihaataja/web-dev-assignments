@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { render } from "react-dom";
+import { Outlet, Link } from "react-router-dom";
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+import Content from './components/Content/Content';
+
 declare global {
   interface Window {
     eb_map: any;
@@ -37,8 +40,8 @@ const init = async () => {
   const eb = await coreInit();
   console.log(window);
   auth(eb);
-  const canvas = document.getElementById("map_area");
-  mapInit(eb, canvas);
+  // const canvas = document.getElementById("map_area");
+  // mapInit(eb, canvas);
   renderApp(eb);
 }
 const auth = async (eb: any) => {
@@ -48,7 +51,7 @@ const auth = async (eb: any) => {
   eb_core.eb_add_hook(eb, "post_connection_status_change", (eb: any, status: any, previous_status: any) => console.log("status", status));
   await eb_core.eb_connect(eb);
   await eb_core.eb_load_organization(eb, eb_core.eb_get_current_user_organization_id(eb));
-
+  await eb_core.eb_load_location(eb, eb.organization.locations[0]);
 }
 
 const renderApp = (eb: any) => {
@@ -56,11 +59,17 @@ const renderApp = (eb: any) => {
   root.render(<BrowserRouter>
     <EbContext.Provider value={eb}>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<App />}>
+          <Route path="room/:roomId" element={<Content />} />
+
+        </Route>
         <Route
           path="*"
           element={
-            <h2>Route not found!</h2>
+            <div>
+              <h2>Route not found!</h2>
+              <Link to="/">Back home</Link>
+            </div>
           }
         />
       </Routes>
