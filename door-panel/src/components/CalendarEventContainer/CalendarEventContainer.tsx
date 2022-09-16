@@ -6,9 +6,12 @@ const CalendarEventContainer = ({ name, startTime, endTime }: { name: string, st
     return (
         <div className={styles.calendarEventContainer}>
             <h1>{name}</h1>
-            <h2><Moment>{startTime}</Moment></h2>
-            <h2><Moment format='HH:mm'>{startTime}</Moment></h2>
-            <h2><Moment format='HH:mm'>{endTime}</Moment></h2>
+            <div className={styles.timeRow}>
+                <h2><Moment format='HH:mm'>{startTime}</Moment></h2>
+                <h2>-</h2>
+                <h2><Moment format='HH:mm'>{endTime}</Moment></h2>
+            </div>
+
         </div>
     )
 }

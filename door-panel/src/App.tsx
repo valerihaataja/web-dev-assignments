@@ -10,8 +10,13 @@ function App() {
   const [filterText, setFilterText] = useState("");
   let navigate = useNavigate();
   const routeChange = () => {
+    let isRoom = eb.sorted_assets.by_type.room.find((obj: { id: string; }) => obj.id === filterText);
     let path = `/room/${filterText}`;
-    navigate(path);
+    if (isRoom) {
+      navigate(path);
+    } else {
+      navigate("notfound");
+    }
     setFilterText("");
   }
   return (
@@ -21,8 +26,6 @@ function App() {
           value={filterText}
           onChange={(event) => {
             setFilterText(event.target.value);
-            console.log(filterText);
-
           }}
         />
         <button onClick={routeChange}>Search</button>

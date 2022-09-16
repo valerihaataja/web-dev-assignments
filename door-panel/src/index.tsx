@@ -38,7 +38,6 @@ const mapInit = async (eb: any, map: any) => {
 
 const init = async () => {
   const eb = await coreInit();
-  console.log(window);
   auth(eb);
   // const canvas = document.getElementById("map_area");
   // mapInit(eb, canvas);
@@ -61,7 +60,7 @@ const renderApp = (eb: any) => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="room/:roomId" element={<Content />} />
-
+          <Route path="notfound" element={<h1>Room not found</h1>} />
         </Route>
         <Route
           path="*"
