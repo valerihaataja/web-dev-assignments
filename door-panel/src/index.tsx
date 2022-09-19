@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { render } from "react-dom";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, Navigate } from "react-router-dom";
 import {
   BrowserRouter,
   Routes,
@@ -58,7 +58,9 @@ const renderApp = (eb: any) => {
   root.render(<BrowserRouter>
     <EbContext.Provider value={eb}>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<Navigate to="room" />}>
+        </Route>
+        <Route path='/room' element={<App />}>
           <Route path="room/:roomId" element={<Content />} />
           <Route path="notfound" element={<h1>Room not found</h1>} />
         </Route>

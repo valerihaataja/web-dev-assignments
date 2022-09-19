@@ -11,7 +11,7 @@ function App() {
   let navigate = useNavigate();
   const routeChange = () => {
     let isRoom = eb.sorted_assets.by_type.room.find((obj: { id: string; }) => obj.id === filterText);
-    let path = `/room/${filterText}`;
+    let path = `room/${filterText}`;
     if (isRoom) {
       navigate(path);
     } else {

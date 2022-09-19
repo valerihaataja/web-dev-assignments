@@ -36,8 +36,6 @@ const Content = () => {
             <Link to="/">HOME</Link>
             <Header />
             <h1>{currentRoom.name !== undefined ? currentRoom.name : "ss"}</h1>
-            <h2>A meeting room for 10 people with 1 persion inside</h2>
-
             {todaysEvents.length > 0 ? todaysEvents.map(({ subject, start, end }: any) => {
                 return <CalendarEventContainer key={start + end} name={subject} startTime={start} endTime={end} />
             }) : <h3>No reservations</h3>}
